@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -83,9 +85,9 @@ WSGI_APPLICATION = 'Topshelf.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Ziplink',          
+        'NAME': config('DB_NAME'),          
         'USER': 'postgres',       
-        'PASSWORD': '5002',  
+        'PASSWORD': config('DB_PASSWORD'),  
         'HOST': 'localhost',
         'PORT': '5432',
     }
