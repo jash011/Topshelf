@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Ziplink</title>
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Chettan+2:wght@700&display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/x-icon" href="{% static 'Ziplink.ico' %}">
+
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+
+<body>
+  <div class="container">
+
+  <header>
+      <div class="logo"><img src="{% static 'zip1.svg' %}" alt="Logo" width="100" height="50"></div>
+      <div class="buttons">
+        <button class="login">Login →</button>
+      </div>
+    </header>
+
+    <div class="container text-center my-5">
+        <div class="title">zipp<span>Links :)</span></div>
+        <div class="selfhead mb-4">Your Shortened URL</div>
+
+        {% if shortened_url %}
+          <div class="alert alert-success url-box" role="alert">
+          <a href="{{ shortened_url }}" target="_blank">{{ shortened_url }}</a>
+          </div>
+        {% elif error %}
+          <div class="alert alert-danger" role="alert">
+          {{ error }}
+          </div>
+        {% else %}
+          <div class="alert alert-warning subtitle">
+          Please enter a valid URL to shorten.
+          </div>
+        {% endif %}
+
+        <a class= "return-btn" href="{% url 'index' %}">Shorten Another URL</a>
+    </div>
+
+  </div>
+
+<script>
+  const urlBox = document.querySelector('.url-box a');
+
+  if (urlBox) {
+    urlBox.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      const url = this.href;
+      navigator.clipboard.writeText(url).then(() => {
+        alert("✅ Shortened URL copied to clipboard!");
+        window.open(url, '_blank');
+      }).catch(err => {
+        alert("❌ Failed to copy. You can manually copy the link.");
+      });
+    });
+  }
+</script>
+</body>
+</html>

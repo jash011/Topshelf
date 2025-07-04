@@ -1,0 +1,52 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django migration files
+**/migrations/*.pyc
+**/migrations/__pycache__/
+**/migrations/*.sqlite3
+
+# Environment variables
+.env
+*.env
+
+# Virtual environment
+venv/
+env/
+ENV/
+.venv/
+.ENV/
+
+# VSCode and PyCharm config
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Compiled files and cache
+*.swp
+*.bak
+*.tmp
+*.log
+.cache/
+__pypackages__/
+
+# pip cache
+pip-wheel-metadata/
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# PostgreSQL artifacts
+*.pgsql
+*.sql~
+.pgdata/
+pgdata/
+.pgpass
+
+# Git
+.git/
