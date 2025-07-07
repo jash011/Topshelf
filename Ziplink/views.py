@@ -76,3 +76,33 @@ def shorten_url(long_url):
         return None, "Invalid API token."
     else:
         return None, "Ziplink couldn't shorten your URL. Please try again."
+    
+def get_clicks(request, sl_id):
+    if not sl_id:
+        return JsonResponse({'error': 'Invalid sl_id'}, status=400)
+
+    url = f'https://api.rebrandly.com/v1/links/{sl_id}'
+    headers = {
+        'apikey': ACCESS_TOKEN,
+        'Content-Type': 'application/json'
+    }
+
+    response = requests.get(url, headers=headers)
+
+    if response.status_code == 200:
+        data = response.json()
+        click_count = data.get('clicks', 0)
+
+        try:
+            link = Link.objects.get(sl_id=sl_id)
+            link.clicks = click_count
+            link.save()
+        except Link.DoesNotExist:
+            pass
+
+        print("🔗 Link found:", sl_id)
+        print("📊 Clicks fetched:", click_count)
+
+        return JsonResponse({'clicks': click_count})
+    else:
+        return JsonResponse({'error': 'Failed to fetch clicks'}, status=500)
