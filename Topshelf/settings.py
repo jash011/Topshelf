@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 from decouple import config
+import os
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -28,7 +29,6 @@ SECRET_KEY = 'django-insecure-n0c$d+&ccq3e7hd%70oe5b(ag($xtqqorsb)k@60joo+&#j$0)
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -57,7 +57,7 @@ ROOT_URLCONF = 'Topshelf.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates", BASE_DIR / "Topshelf" / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

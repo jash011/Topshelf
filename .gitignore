@@ -8,6 +8,9 @@ __pycache__/
 **/migrations/__pycache__/
 **/migrations/*.sqlite3
 
+# Ignore extra testing files
+**/extra/*
+
 # Environment variables
 .env
 *.env
