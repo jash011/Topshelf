@@ -9,29 +9,14 @@
           <a href="{{ shortened_url }}" target="_blank">{{ shortened_url }}</a>
           </div>
         {% elif error %}
-          <div class="alert alert-danger" role="alert">
-          {{ error }}
+          <div class="alert alert-secondary" role="alert">
+          <b>{{ error }}</b>
           </div>
         {% else %}
-          <div class="alert alert-warning subtitle">
+          <div class="alert alert-dark subtitle">
           Please enter a valid URL to shorten.
           </div>
         {% endif %}
         <a class= "return-btn" href="{% url 'index' %}">Shorten Another URL</a>
     </div>
-    <script>
-      const urlBox = document.querySelector('.url-box a');
-      if (urlBox) {
-        urlBox.addEventListener('click', function (e) {
-          e.preventDefault();
-          const url = this.href;
-          navigator.clipboard.writeText(url).then(() => {
-            alert("Shortened URL copied to clipboard!");
-            window.open(url, '_blank');
-          }).catch(err => {
-            alert("Failed to copy. You can manually copy the link.");
-          });
-        });
-      }
-    </script>
 {% endblock %}

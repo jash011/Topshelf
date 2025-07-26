@@ -19,5 +19,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('Ziplink/', include('Ziplink.urls'))
+    path('Ziplink/', include('Ziplink.urls')),
+    path('auth/', include('login.urls')),
 ]

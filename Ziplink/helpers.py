@@ -47,4 +47,4 @@ def get_clicks_helper(request, sl_id):
             pass
         return JsonResponse({'clicks': click_count})
     else:
-        return JsonResponse({'error': 'Failed to fetch clicks'}, status=500) 
+        return JsonResponse({'error': 'Failed to fetch clicks'}, status=500)

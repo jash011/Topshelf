@@ -53,9 +53,7 @@ def index_form(request):
         return redirect('index')
 
 def shorten_url(long_url):
-    # Moved to helpers.py
-    return shorten_url_helper(long_url)
+    return shorten_url_helper(long_url) #api call
     
 def get_clicks(request, sl_id):
-    # Moved to helpers.py
-    return get_clicks_helper(request, sl_id)
+    return get_clicks_helper(request, sl_id) #api call
